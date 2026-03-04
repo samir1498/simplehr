@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -12,6 +15,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "payroll_profiles")
+@Getter
+@Setter
+@NoArgsConstructor
 public class PayrollProfileJpaEntity {
 	@Id
 	@Column(nullable = false, updatable = false)
@@ -35,19 +41,4 @@ public class PayrollProfileJpaEntity {
 	@Version
 	@Column(nullable = false)
 	private long version;
-
-	public UUID getId() { return id; }
-	public void setId(UUID id) { this.id = id; }
-	public UUID getEmployeeId() { return employeeId; }
-	public void setEmployeeId(UUID employeeId) { this.employeeId = employeeId; }
-	public BigDecimal getBaseSalary() { return baseSalary; }
-	public void setBaseSalary(BigDecimal baseSalary) { this.baseSalary = baseSalary; }
-	public boolean isActive() { return active; }
-	public void setActive(boolean active) { this.active = active; }
-	public Instant getCreatedAt() { return createdAt; }
-	public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
-	public Instant getUpdatedAt() { return updatedAt; }
-	public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
-	public long getVersion() { return version; }
-	public void setVersion(long version) { this.version = version; }
 }
