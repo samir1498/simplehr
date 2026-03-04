@@ -4,6 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -11,6 +14,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "payroll_adjustments")
+@Getter
+@Setter
+@NoArgsConstructor
 public class PayrollAdjustmentJpaEntity {
 	@Id
 	@Column(nullable = false, updatable = false)
@@ -30,17 +36,4 @@ public class PayrollAdjustmentJpaEntity {
 
 	@Column(name = "created_at", nullable = false)
 	private Instant createdAt;
-
-	public UUID getId() { return id; }
-	public void setId(UUID id) { this.id = id; }
-	public UUID getEmployeeId() { return employeeId; }
-	public void setEmployeeId(UUID employeeId) { this.employeeId = employeeId; }
-	public UUID getLeaveRequestId() { return leaveRequestId; }
-	public void setLeaveRequestId(UUID leaveRequestId) { this.leaveRequestId = leaveRequestId; }
-	public BigDecimal getAmount() { return amount; }
-	public void setAmount(BigDecimal amount) { this.amount = amount; }
-	public String getReason() { return reason; }
-	public void setReason(String reason) { this.reason = reason; }
-	public Instant getCreatedAt() { return createdAt; }
-	public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
 }
