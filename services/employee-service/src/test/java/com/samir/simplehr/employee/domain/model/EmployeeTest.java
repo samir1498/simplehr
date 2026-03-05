@@ -1,7 +1,6 @@
 package com.samir.simplehr.employee.domain.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -45,7 +44,7 @@ class EmployeeTest {
         Instant now = Instant.now();
         return Employee.builder()
             .id(UUID.randomUUID())
-            .fullName("Samir Bensalem")
+            .fullName("Samir B")
             .email(email)
             .salary(new BigDecimal("150000"))
             .hireDate(LocalDate.of(2026, 3, 3))

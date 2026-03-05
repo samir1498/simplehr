@@ -24,7 +24,8 @@ class EmployeeApplicationServiceTest {
 
     @Test
     void shouldCreateEmployeeWithStubbedDependencies() {
-        InMemoryEmployeeRepository repository = new InMemoryEmployeeRepository();
+        InMemoryEmployeeRepository repository =
+            new InMemoryEmployeeRepository();
         RecordingEmployeeEventPublisher publisher =
             new RecordingEmployeeEventPublisher();
         EmployeeApplicationService service = new EmployeeApplicationService(
@@ -33,7 +34,7 @@ class EmployeeApplicationServiceTest {
         );
 
         CreateEmployeeCommand command = new CreateEmployeeCommand(
-            "Samir Bensalem",
+            "Samir B",
             " Samir@Test.com ",
             new BigDecimal("150000"),
             LocalDate.of(2026, 3, 3)
@@ -49,7 +50,8 @@ class EmployeeApplicationServiceTest {
 
     @Test
     void shouldThrowDuplicateWhenEmailAlreadyExistsBeforeSave() {
-        InMemoryEmployeeRepository repository = new InMemoryEmployeeRepository();
+        InMemoryEmployeeRepository repository =
+            new InMemoryEmployeeRepository();
         repository.existingEmailCheckResult = true;
         RecordingEmployeeEventPublisher publisher =
             new RecordingEmployeeEventPublisher();
@@ -59,7 +61,7 @@ class EmployeeApplicationServiceTest {
         );
 
         CreateEmployeeCommand command = new CreateEmployeeCommand(
-            "Samir Bensalem",
+            "Samir B",
             "samir@test.com",
             new BigDecimal("150000"),
             LocalDate.of(2026, 3, 3)
@@ -80,7 +82,8 @@ class EmployeeApplicationServiceTest {
 
     @Test
     void shouldThrowDuplicateWhenSaveHitsUniqueConstraint() {
-        InMemoryEmployeeRepository repository = new InMemoryEmployeeRepository();
+        InMemoryEmployeeRepository repository =
+            new InMemoryEmployeeRepository();
         repository.throwOnSave = true;
         RecordingEmployeeEventPublisher publisher =
             new RecordingEmployeeEventPublisher();
@@ -90,7 +93,7 @@ class EmployeeApplicationServiceTest {
         );
 
         CreateEmployeeCommand command = new CreateEmployeeCommand(
-            "Samir Bensalem",
+            "Samir B",
             "samir@test.com",
             new BigDecimal("150000"),
             LocalDate.of(2026, 3, 3)
@@ -109,7 +112,8 @@ class EmployeeApplicationServiceTest {
     }
 
     private static final class InMemoryEmployeeRepository
-        implements EmployeeRepositoryPort {
+        implements EmployeeRepositoryPort
+    {
 
         private final Map<UUID, Employee> savedEmployeesById = new HashMap<>();
         private boolean existingEmailCheckResult;
@@ -136,7 +140,8 @@ class EmployeeApplicationServiceTest {
     }
 
     private static final class RecordingEmployeeEventPublisher
-        implements EmployeeEventPublisherPort {
+        implements EmployeeEventPublisherPort
+    {
 
         private String createdEmail;
 
