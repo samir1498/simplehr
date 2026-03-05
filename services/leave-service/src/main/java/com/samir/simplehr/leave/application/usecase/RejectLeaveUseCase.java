@@ -1,4 +1,4 @@
-package com.samir.simplehr.leave.application.port.in;
+package com.samir.simplehr.leave.application.usecase;
 
 import com.samir.simplehr.leave.application.command.ReviewLeaveCommand;
 import com.samir.simplehr.leave.application.model.LeaveRequestResult;

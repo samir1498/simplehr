@@ -1,4 +1,4 @@
-package com.samir.simplehr.leave.application.port.out;
+package com.samir.simplehr.leave.application.gateway;
 
 import com.samir.simplehr.leave.domain.model.LeaveRequest;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface LeaveRequestRepositoryPort {
+public interface LeaveRequestRepository {
 	Optional<LeaveRequest> findById(UUID leaveRequestId);
 
 	LeaveRequest save(LeaveRequest leaveRequest);
