@@ -9,11 +9,11 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LeaveRequestPersistenceAdapter implements LeaveRequestRepository {
+public class LeaveRequestRepositoryImpl implements LeaveRequestRepository {
 
     private final SpringDataLeaveRequestRepository leaveRequestRepository;
 
-    public LeaveRequestPersistenceAdapter(
+    public LeaveRequestRepositoryImpl(
         SpringDataLeaveRequestRepository leaveRequestRepository
     ) {
         this.leaveRequestRepository = leaveRequestRepository;
