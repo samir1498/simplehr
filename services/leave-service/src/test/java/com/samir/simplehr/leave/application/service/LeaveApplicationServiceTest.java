@@ -4,7 +4,7 @@ import com.samir.simplehr.leave.application.command.RequestLeaveCommand;
 import com.samir.simplehr.leave.application.command.ReviewLeaveCommand;
 import com.samir.simplehr.leave.application.exception.BusinessRuleViolationException;
 import com.samir.simplehr.leave.application.exception.UnauthorizedOperationException;
-import com.samir.simplehr.leave.application.port.out.LeaveRequestRepositoryPort;
+import com.samir.simplehr.leave.application.gateway.LeaveRequestRepository;
 import com.samir.simplehr.leave.domain.model.LeaveRequest;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +22,7 @@ class LeaveApplicationServiceTest {
 
 	@Test
 	void shouldRejectOverlapWithApprovedLeave() {
-		LeaveRequestRepositoryPort repository = mock(LeaveRequestRepositoryPort.class);
+		LeaveRequestRepository repository = mock(LeaveRequestRepository.class);
 		LeaveApplicationService service = new LeaveApplicationService(repository);
 
 		when(repository.existsApprovedOverlap(any(), any(), any())).thenReturn(true);
@@ -36,7 +36,7 @@ class LeaveApplicationServiceTest {
 
 	@Test
 	void shouldRejectWhenYearlyAllowanceExceeded() {
-		LeaveRequestRepositoryPort repository = mock(LeaveRequestRepositoryPort.class);
+		LeaveRequestRepository repository = mock(LeaveRequestRepository.class);
 		LeaveApplicationService service = new LeaveApplicationService(repository);
 		UUID employeeId = UUID.randomUUID();
 
@@ -66,7 +66,7 @@ class LeaveApplicationServiceTest {
 
 	@Test
 	void shouldOnlyAllowManagerToApprove() {
-		LeaveRequestRepositoryPort repository = mock(LeaveRequestRepositoryPort.class);
+		LeaveRequestRepository repository = mock(LeaveRequestRepository.class);
 		LeaveApplicationService service = new LeaveApplicationService(repository);
 		UUID leaveId = UUID.randomUUID();
 
